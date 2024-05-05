@@ -1,8 +1,18 @@
-# React + Vite
+# Project Name: ctms-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+An example CTMS dashboard designed to demonstrate knowledge of React and APIs, utilizing Vite for build optimization and TailwindCSS for styling.
 
-Currently, two official plugins are available:
+## Technologies Used
+- **React**: For building the user interface.
+- **Vite**: Employed for fast development environment setup with HMR.
+- **TailwindCSS**: For styling components.
+- **ESLint**: To enforce code style and quality.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+
+## Features
+- [TBD]
