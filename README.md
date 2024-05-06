@@ -1,4 +1,4 @@
-# Project Name: ctms-ui
+# Project Name: CTMS UI
 
 ## Description
 An example CTMS dashboard designed to demonstrate knowledge of React and APIs, utilizing Vite for build optimization and TailwindCSS for styling.

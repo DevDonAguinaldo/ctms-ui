@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
+  const [trials, setTrials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5200/users')
+    fetch('http://localhost:5200/trials')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -14,7 +14,7 @@ const Users = () => {
         return response.json();
       })
       .then(data => {
-        setUsers(data);
+        setTrials(data);
         setLoading(false);
       })
       .catch(error => {
@@ -25,7 +25,7 @@ const Users = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
+      <div className="mx-auto max-w-7xl px-2 sm:px-4 ltrialsg:divide-y lg:divide-gray-700 lg:px-8">
         {/* Other elements */}
       </div>
       {/* Loading and error handling */}
@@ -54,25 +54,28 @@ const Users = () => {
                         <thead>
                           <tr>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              User ID
+                              Trial ID
                             </th>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              Username
+                              Title
                             </th>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              First Name
-                            </th>
-                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              Last Name
+                              Description
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Email
+                              Start Date
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Role
+                              End Date
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Contact
+                              Status
+                            </th>
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                              Principal Investigator ID
+                            </th>
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                              Budget
                             </th>
                             <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                               <span className="sr-only">Edit</span>
@@ -80,20 +83,21 @@ const Users = () => {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-800">
-                          {users.map((user) => (
-                            <tr key={user.userID}>
+                          {trials.map((trial) => (
+                            <tr key={trial.trialID}>
                               <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {user.userID}
+                                {trial.trialID}
                               </td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.username}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.firstName}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.lastName}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.email}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.role}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.contactNumber}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.title}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.description}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.startDate}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.endDate}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.status}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.principalInvestigatorID}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{trial.budget}</td>
                               <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                                 <a href="#" className="text-indigo-400 hover:text-indigo-300">
-                                  Edit<span className="sr-only">, {user.name}</span>
+                                  Edit<span className="sr-only">, {trial.name}</span>
                                 </a>
                               </td>
                             </tr>
