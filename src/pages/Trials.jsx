@@ -25,14 +25,14 @@ const Users = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-2 sm:px-4 ltrialsg:divide-y lg:divide-gray-700 lg:px-8">
+      <div className="lg:divide-y lg:divide-gray-700">
         {/* Other elements */}
       </div>
       {/* Loading and error handling */}
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
       {!loading && !error && (
-        <div className="bg-gray-900">
+        <div className="bg-gray-900 w-full">
           <div className="mx-auto max-w-7xl">
             <div className="bg-gray-900 py-10">
               <div className="px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ const Users = () => {
                       type="button"
                       className="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
-                      Add user
+                      Add Trial
                     </button>
                   </div>
                 </div>

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
+  const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5200/users')
+    fetch('http://localhost:5200/subjects')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -14,7 +14,7 @@ const Users = () => {
         return response.json();
       })
       .then(data => {
-        setUsers(data);
+        setSubjects(data);
         setLoading(false);
       })
       .catch(error => {
@@ -25,7 +25,7 @@ const Users = () => {
 
   return (
     <>
-      <div className="max-w-7xl lg:divide-y lg:divide-gray-700">
+      <div className="lg:divide-y lg:divide-gray-700">
         {/* Other elements */}
       </div>
       {/* Loading and error handling */}
@@ -43,7 +43,7 @@ const Users = () => {
                       type="button"
                       className="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
-                      Add User
+                      Add Subject
                     </button>
                   </div>
                 </div>
@@ -54,25 +54,25 @@ const Users = () => {
                         <thead>
                           <tr>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              User ID
+                              Subject ID
                             </th>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
-                              Username
+                              Trial ID
                             </th>
                             <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
                               First Name
                             </th>
-                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
+                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
                               Last Name
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Email
+                              Date of Birth
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Role
+                              Gender
                             </th>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
-                              Contact
+                              Enrollment Status
                             </th>
                             <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                               <span className="sr-only">Edit</span>
@@ -80,20 +80,20 @@ const Users = () => {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-800">
-                          {users.map((user) => (
-                            <tr key={user.userID}>
+                          {subjects.map((subject) => (
+                            <tr key={subject.subjectID}>
                               <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {user.userID}
+                                {subject.subjectID}
                               </td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.username}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.firstName}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.lastName}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.email}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.role}</td>
-                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{user.contactNumber}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.trialID}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.firstName}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.lastName}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.dob}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.gender}</td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{subject.enrollmentStatus}</td>
                               <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                                 <a href="#" className="text-indigo-400 hover:text-indigo-300">
-                                  Edit<span className="sr-only">, {user.name}</span>
+                                  Edit<span className="sr-only">, {subject.name}</span>
                                 </a>
                               </td>
                             </tr>

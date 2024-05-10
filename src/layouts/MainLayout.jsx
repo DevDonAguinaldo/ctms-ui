@@ -5,7 +5,9 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <div className="flex min-h-screen lg:pl-72">
+        <Outlet  />
+      </div>
     </>
   )
 };
